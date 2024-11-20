@@ -9,7 +9,8 @@
 
                 const hotspotPositionsByRoom = {
                     Bathroom: [
-                        { top: "75%", left: "63%" }
+                        { top: "75%", left: "63%", id: 762 },
+                        { top: "35%", left: "23%", id: 770 }
                     ],
                     Children: [
                         { top: "20%", left: "40%" }
@@ -32,15 +33,26 @@
                             console.log(data);
 
                             const hotspotPositions = hotspotPositionsByRoom[room] || [];
-                            
-                            // Map the filtered data to hotspots
-                            const hotspots = data.slice(0, hotspotPositions.length).map((item, index) => ({
-                                top: hotspotPositions[index].top, 
-                                left: hotspotPositions[index].left,
-                                title: item.name,                
-                                details: `${item.description} Price: $${item.price}`, 
-                                sku: item.sku
-                            }));
+
+                            // Map the hardcoded positions to API data based on matching `id`
+                            const hotspots = hotspotPositions.map(position => {
+                                // Find the corresponding item in API data by matching `id`
+                                const item = data.find(d => d.id === position.id);
+
+                                if (!item) {
+                                    console.warn(`No matching data found for hotspot with ID ${position.id}`);
+                                    return null; // Skip this hotspot if no matching data is found
+                                }
+
+                                // Combine hardcoded position with dynamic API data
+                                return {
+                                    top: position.top,
+                                    left: position.left,
+                                    title: item.name,
+                                    details: `${item.description} Price: $${item.price}`,
+                                    sku: item.sku
+                                };
+                            }).filter(Boolean); // Remove any null hotspots
 
                             const roomConfig = {
                                 image: `../../img/showroom/${room.toLowerCase()}.png`,
