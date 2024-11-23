@@ -85,6 +85,9 @@ document.write('\
             <nav class="nav-main mega-menu">\
                 <ul class="nav nav-pills nav-main" id="mainMenu">\
                     <li>\
+                        <a href="/B/' + countryPrefix + '/promos.html">Promotions</a>\
+                    </li>\
+                    <li>\
                         <a href="/B/' + countryPrefix + '/showroom.html">Showroom</a>\
                     </li>\
                     <li>\
