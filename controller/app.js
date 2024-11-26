@@ -10,6 +10,7 @@ app.use(require('./storeentityDB.js'));
 app.use(require('./payment.js'));
 app.use(require('./staffentityDB.js'));
 app.use(require('./rawmaterialentityDB.js'));
+app.use(require('./promotionentityDB.js'));
 app.use(require('./purchaseorderentityDB.js'));
 app.use(require('./shippingorderentityDB.js'));
 app.use(require('./supplierentityDB.js'));
