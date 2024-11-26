@@ -6,7 +6,29 @@
 
     <body>
         <script src="menu2.js"></script>
-        
+        <script>
+            var countryPrefix = localStorage.getItem('urlPrefix');
+            var currentUrl = new URL(window.location.href);
+            var memberEmail = sessionStorage.getItem('memberEmail');
+            var countryId = localStorage.getItem('countryId');
+            fetch(new Request('/api/getAllPromotions',
+                {
+                    method: 'GET'
+                })).then(function (response)
+            {
+                return response.json();
+            }).then(function (data) {
+                console.log(data);
+                var htmlTxt = '';
+                data.forEach(function (promo) {
+                    htmlTxt += '\
+                    <li>\
+                    <a href="furnitureProductDetails.html?sku=' + promo.sku + '"</a>\
+                        <img alt="" class="img-responsive" src="' + promo.img.split('/').slice(1).join('/') + '">'
+                })
+            })
+        </script>
+
         <div id="content">
             <div role="main" class="main">
                 <section class="page-top">
@@ -18,6 +40,10 @@
                         </div>
                     </div>
                 </section>
+
+                <div id="prominent"></div>
+
+                <div id="normal"></div>
             </div>
 
         <script src="../footer.js"></script>
