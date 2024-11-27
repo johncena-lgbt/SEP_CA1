@@ -18,14 +18,15 @@
             {
                 return response.json();
             }).then(function (data) {
-                console.log(data);
-                var htmlTxt = '';
+                console.log(data)
+                var prominentPromo = '';
                 data.forEach(function (promo) {
-                    htmlTxt += '\
-                    <li>\
-                    <a href="furnitureProductDetails.html?sku=' + promo.sku + '"</a>\
-                        <img alt="" class="img-responsive" src="' + promo.img.split('/').slice(1).join('/') + '">'
+                    prominentPromo += '\
+                    <a href="furnitureProductDetails.html?sku=' + promo.sku + '">\
+                        <img alt="" class="img-responsive" src="/' + promo.img.split('/').slice(2).join('/') + '">\
+                    </a>'
                 })
+                document.getElementById("prominent").innerHTML = prominentPromo;
             })
         </script>
 
