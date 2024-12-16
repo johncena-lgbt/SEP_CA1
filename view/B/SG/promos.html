@@ -18,16 +18,30 @@
             {
                 return response.json();
             }).then(function (data) {
-                console.log(data)
-                var prominentPromo = '';
+                                
+                var prominentPromoDiv = '';
                 data.forEach(function (promo) {
-                    prominentPromo += '\
+                    prominentPromoDiv += '\
                     <a href="furnitureProductDetails.html?sku=' + promo.sku + '">\
                         <img alt="" class="img-responsive" src="/' + promo.img.split('/').slice(2).join('/') + '">\
                     </a>'
                 })
-                document.getElementById("prominent").innerHTML = prominentPromo;
+                document.getElementById("prominent").innerHTML = prominentPromoDiv;
+            }).then(() => {
+
+            // Displaying generic promo images
+            const genericPromos = new Array(); // Hard-code this array
+            genericPromos.push('F_BA_16'); // Push the SKU of the product
+
+            var normalPromoDiv = '';
+            genericPromos.forEach(function (promo) {
+                console.log(promo)
+                normalPromoDiv += '\
+                    <a href="furnitureProductDetails.html?sku=' + promo + '">\
+                        <img alt="" class="img-responsive" src="/img/promotions/' + promo + '.jpg">\
+                    </a>'
             })
+            document.getElementById("normal").innerHTML = normalPromoDiv;})
         </script>
 
         <div id="content">
