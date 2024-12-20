@@ -1,0 +1,14 @@
+div#prominent a {
+    display: block;
+    position: relative;
+    width: 75rem;
+    margin: 5rem;
+}
+
+div#normal {
+    display: grid;
+    column-gap: 5rem;
+    row-gap: 5rem;
+    margin: 3rem;
+    left: 3rem;
+}
