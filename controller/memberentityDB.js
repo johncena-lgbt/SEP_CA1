@@ -209,19 +209,25 @@ app.put('/api/updateMember', [middleware.checkToken, jsonParser], function (req,
             res.status(500).send("Failed to update member");
         });
 });
-
+//changes made here
 app.put('/api/updateMemberPassword', jsonParser, function (req, res) {
     var email = req.body.email;
     var password = req.body.password;
-    member.updateMemPasswordAndResetCode(email,password)
+
+    console.log("Updating password for:", email);
+    console.log("New password (before hashing):", password);
+
+    member.updateMemPasswordAndResetCode(email, password)
         .then((result) => {
+            console.log("Password update result:", result);
             res.send(result);
         })
         .catch((err) => {
-            console.log(err);
+            console.error("Error updating password:", err);
             res.status(500).send("Failed to update member password");
         });
 });
+
 
 app.put('/api/updateMemberDeliveryDetails', [middleware.checkToken, jsonParser], function (req, res) {
     var email = req.body.email;

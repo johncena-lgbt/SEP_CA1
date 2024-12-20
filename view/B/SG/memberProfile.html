@@ -196,6 +196,7 @@
                 var repassword = document.getElementById("repassword").value;
                 var ok = true;
                 console.log(oldPassword)
+                /*
                 if (document.getElementById("profileForm").checkValidity()) {
                     if (oldPassword != "" && password != "" && repassword != "") {
                         var memberData = {
@@ -276,8 +277,83 @@
                             window.location.href = url + '?errMsg=Unable to Update.';
                         });
                     }
+                } */
+            }
+            
+            //NEW CHANGES
+            async function submitChangePasswordForm() {
+                const oldPassword = document.getElementById('oldPassword').value;
+                const password = document.getElementById('password').value;
+                const repassword = document.getElementById('repassword').value;
+
+                if (oldPassword === "" || password === "" || repassword === "") {
+                    alert("All password fields must be filled.");
+                    return;
+                }
+
+                if (password !== repassword) {
+                    alert("Passwords do not match. Please try again.");
+                    document.getElementById("password").style.borderColor = "#E34234";
+                    document.getElementById("repassword").style.borderColor = "#E34234";
+                    return;
+                }
+
+                if (password.length < 8) {
+                    alert("Password must be at least 8 characters long.");
+                    return;
+                }
+
+                try {
+                    const member = JSON.parse(sessionStorage.getItem("member")); // Get member data from session storage
+                    const authToken = sessionStorage.getItem("token"); // Get token
+
+                    if (!member || !member.email) {
+                        alert("Session expired. Please log in again.");
+                        return;
+                    }
+
+                    // Verify old password
+                    const verifyResponse = await fetch('/api/verifyPassword', {
+                        method: 'POST',
+                        headers: {
+                            'Content-Type': 'application/json',
+                            Authorization: 'Bearer ' + authToken,
+                        },
+                        body: JSON.stringify({ id: member.id, password: oldPassword }),
+                    });
+
+                    const verifyData = await verifyResponse.json();
+
+                    if (!verifyData.success) {
+                        alert("Old password is incorrect.");
+                        return;
+                    }
+
+                    // Update the password
+                    const updateResponse = await fetch('/api/updateMemberPassword', {
+                        method: 'PUT',
+                        headers: {
+                            'Content-Type': 'application/json',
+                            Authorization: 'Bearer ' + authToken,
+                        },
+                        body: JSON.stringify({ email: member.email, password }), // Use email here instead of id
+                    });
+
+                    const updateData = await updateResponse.json();
+
+                    if (updateData.success) {
+                        alert("Password updated successfully!");
+                        document.getElementById('changePasswordForm').reset();
+                    } else {
+                        alert("Failed to update password. Please try again.");
+                    }
+                } catch (error) {
+                    console.error("Error:", error);
+                    alert("An error occurred while updating the password. Please try again later.");
                 }
             }
+            //END OF NEW CHANGES
+
 
             function pdpaWindow() {
                 var myWindow = window.open("pdpa.html");
@@ -308,6 +384,9 @@
                                 </li>
                                 <li>
                                     <a href="#salesHistory" data-toggle="tab">Sales History</a>
+                                </li>
+                                <li>
+                                    <a href="#changePassword" data-toggle="tab">Change Password</a>
                                 </li>
                             </ul>
                             <div class="tab-content">
@@ -606,6 +685,7 @@
                                             Allow us to use your particulars to serve you better?
                                             <br/>Checking the box above indicates that you agree to our <a onclick="pdpaWindow()" style="cursor: pointer">personal data protection policy.</a>
                                         </div>
+                                        <!--
                                         <hr class="more-spaced "/>
                                         <h4>Change Password</h4>
                                         <div class="form-group">
@@ -620,6 +700,7 @@
                                             <label>Re-enter New Password</label>
                                             <input class="form-control" type="password" id="repassword">
                                         </div>
+                                         -->
                                         <div class="panel-footer" style="padding-bottom: 0px;">
                                             <div class="row">
                                                 <div class="form-group">
@@ -637,6 +718,30 @@
                                     <h4>Sales History</h4>
                                     <div id="salesHistoryTab"></div>
                                 </div>
+                                <!--NEW CHANGES-->
+                                <div id="changePassword" class="tab-pane">
+                                    <h4>Change Password</h4>
+                                    <form onsubmit="submitChangePasswordForm(); return false;" id="changePasswordForm">
+                                    <form onsubmit="return false;" id="changePasswordForm">
+                                        <div class="form-group">
+                                            <label>Old Password</label>
+                                            <input class="form-control" type="password" id="oldPassword" />
+                                        </div>
+                                        <div class="form-group">
+                                            <label>New Password<br />Password to be at least 8 characters long.</label>
+                                            <input class="form-control" type="password" id="password" />
+                                        </div>
+                                        <div class="form-group">
+                                            <label>Re-enter New Password</label>
+                                            <input class="form-control" type="password" id="repassword" />
+                                        </div>
+                                        <div class="panel-footer">
+                                            <input type="submit" onclick="submitForm()" value="Submit" class="btn btn-primary" />
+                                            <input type="reset" value="Reset" class="btn btn-primary" />
+                                        </div>
+                                    </form>
+                                </div>
+                                <!--END OF NEW CHANGES-->
                             </div>
                         </div>
                     </div>
