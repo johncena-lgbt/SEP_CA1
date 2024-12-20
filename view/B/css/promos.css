@@ -1,14 +1,32 @@
-div#prominent a {
+div#prominent a img {
     display: block;
     position: relative;
-    width: 75rem;
+    width: 95%;
+    left: -1rem;
     margin: 5rem;
 }
 
 div#normal {
-    display: grid;
-    column-gap: 5rem;
-    row-gap: 5rem;
-    margin: 3rem;
-    left: 3rem;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20rem;
+    margin: 12rem;
+}
+
+div#normal a {
+    max-width: 70rem;
+}
+
+
+
+#content img {
+    border: 1rem solid brown;
+    padding: 1rem;
+}
+
+#line {
+    width: 90%;
+    height: 1rem;
+    background-color: red;
+    margin: 5%;
 }
