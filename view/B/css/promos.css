@@ -20,7 +20,7 @@ div#normal a {
     max-width: 50rem;
 }
 
-#content img {
+#images {
     border: 1rem solid brown;
     padding: 1rem;
 }
@@ -32,6 +32,8 @@ div#normal a {
     margin: 5%;
 }
 
+/* 
 #footer {
     transform: scale(1.3);
-}
+} */
+
