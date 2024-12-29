@@ -1,0 +1,32 @@
+div#prominent a img {
+    display: block;
+    position: relative;
+    width: 95%;
+    left: -1rem;
+    margin: 5rem;
+}
+
+div#normal {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20rem;
+    margin: 12rem;
+}
+
+div#normal a {
+    max-width: 70rem;
+}
+
+
+
+#content img {
+    border: 1rem solid brown;
+    padding: 1rem;
+}
+
+#line {
+    width: 90%;
+    height: 1rem;
+    background-color: red;
+    margin: 5%;
+}
