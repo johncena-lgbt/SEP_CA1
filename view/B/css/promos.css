@@ -7,6 +7,7 @@ div#prominent a img {
 }
 
 #normal {
+    display: inline-flex;
     row-gap: 10em;
     column-gap: 15%;
     flex-wrap: wrap;
