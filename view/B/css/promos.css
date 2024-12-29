@@ -13,6 +13,7 @@ div#prominent a img {
     flex-wrap: wrap;
     margin-left: 14%;
     margin-right: 10%;
+    margin-bottom: 10%;
 }
 
 div#normal a {
@@ -29,4 +30,8 @@ div#normal a {
     height: 1rem;
     background-color: red;
     margin: 5%;
+}
+
+#footer {
+    transform: scale(1.3);
 }
