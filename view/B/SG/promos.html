@@ -23,7 +23,7 @@
                 data.forEach(function (promo) {
                     prominentPromoDiv += '\
                     <a href="furnitureProductDetails.html?sku=' + promo.sku + '">\
-                        <img alt="" class="img-responsive" src="/' + promo.img.split('/').slice(2).join('/') + '">\
+                        <img id="images" alt="" class="img-responsive" src="/' + promo.img.split('/').slice(2).join('/') + '">\
                     </a>'
                 })
                 document.getElementById("prominent").innerHTML = prominentPromoDiv;
@@ -40,7 +40,7 @@
             genericPromos.forEach(function (promo) {
                 normalPromoDiv += '\
                     <a href="furnitureProductDetails.html?sku=' + promo + '">\
-                        <img alt="" class="img-responsive" src="/img/promotions/' + promo + '.jpg">\
+                        <img id="images" alt="" class="img-responsive" src="/img/promotions/' + promo + '.jpg" >\
                     </a>'
             })
             document.getElementById("normal").innerHTML = normalPromoDiv;})
