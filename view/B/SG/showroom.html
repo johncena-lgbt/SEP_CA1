@@ -13,10 +13,16 @@
                         { top: "35%", left: "23%", id: 770 }
                     ],
                     Children: [
-                        { top: "20%", left: "40%" }
+                        { top: "80%", left: "65%", id:947 },
+                        { top: "37%", left: "83%", id:952 },
+                        // { top: "87%", left: "83%", id:950 },
+                        { top: "37%", left: "30%", id:958 },
                     ],
                     Study: [
-                        { top: "59.5%", left: "33%" }
+                        { top: "59.5%", left: "33%", id:927 },
+                        { top: "71.5%", left: "6%", id:944 },
+                        { top: "30.5%", left: "67%", id:946 },
+                        { top: "55.5%", left: "51.5%", id:944 }
                     ]
                 };
 
@@ -41,10 +47,9 @@
 
                                 if (!item) {
                                     console.warn(`No matching data found for hotspot with ID ${position.id}`);
-                                    return null; // Skip this hotspot if no matching data is found
+                                    return null; 
                                 }
 
-                                // Combine hardcoded position with dynamic API data
                                 return {
                                     top: position.top,
                                     left: position.left,
@@ -52,7 +57,7 @@
                                     details: `${item.description} Price: $${item.price}`,
                                     sku: item.sku
                                 };
-                            }).filter(Boolean); // Remove any null hotspots
+                            }).filter(Boolean);
 
                             const roomConfig = {
                                 image: `../../img/showroom/${room.toLowerCase()}.png`,
