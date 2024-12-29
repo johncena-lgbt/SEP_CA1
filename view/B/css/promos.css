@@ -6,18 +6,17 @@ div#prominent a img {
     margin: 5rem;
 }
 
-div#normal {
-    display: flex;
+#normal {
+    row-gap: 10em;
+    column-gap: 15%;
     flex-wrap: wrap;
-    gap: 20rem;
-    margin: 12rem;
+    margin-left: 14%;
+    margin-right: 10%;
 }
 
 div#normal a {
-    max-width: 70rem;
+    max-width: 50rem;
 }
-
-
 
 #content img {
     border: 1rem solid brown;
