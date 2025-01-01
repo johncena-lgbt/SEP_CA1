@@ -8,11 +8,10 @@ div#prominent a img {
 
 #normal {
     display: inline-flex;
-    row-gap: 10em;
+    row-gap: 10rem;
     column-gap: 15%;
     flex-wrap: wrap;
-    margin-left: 4%;
-    margin-right: 10%;
+    margin-left: 1rem;
     margin-bottom: 10%;
 }
 
