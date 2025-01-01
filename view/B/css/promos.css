@@ -7,16 +7,15 @@ div#prominent a img {
 }
 
 #normal {
-    display: inline-flex;
-    row-gap: 10rem;
-    column-gap: 15%;
-    flex-wrap: wrap;
-    margin-left: 1rem;
-    margin-bottom: 10%;
+    margin-bottom:20%
 }
 
-div#normal a {
-    max-width: 50rem;
+#normal a {
+display: block;
+width: 50%;
+margin-left: 31%;
+margin-bottom: 10%;
+margin-right: 0%;
 }
 
 #content img {
