@@ -7,15 +7,15 @@ div#prominent a img {
 }
 
 #normal {
-    margin-bottom:20%
+    display: inline-flex;
+    flex-wrap: wrap;
+    margin-left: 12%;
 }
 
 #normal a {
-display: block;
-width: 50%;
-margin-left: 31%;
-margin-bottom: 10%;
-margin-right: 0%;
+    width: 40%;
+    margin-right: 5%;
+    margin-bottom: 10%;
 }
 
 #images {
